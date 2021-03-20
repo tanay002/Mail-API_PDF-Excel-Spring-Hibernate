@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>
+<class name="SingleTableMaping.Persondto" table="Person" discriminator-value="per">
+<id name="pId">
+<generator class="assigned">
+</generator>
+</id>
+<discriminator column="Type" type="string"></discriminator>
+<property name="pName" ></property>
+<subclass discriminator-value="std" name="SingleTableMaping.StudentDto">
+<property name="rollno">
+</property>
+</subclass>
+
+<subclass discriminator-value="teach" name="SingleTableMaping.TeacherDto">
+<property name="course">
+</property>
+</subclass>
+
+</class>
+</hibernate-mapping>

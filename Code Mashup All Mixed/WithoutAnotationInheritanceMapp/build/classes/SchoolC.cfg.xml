@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">  
+  
+<hibernate-configuration>  
+  
+<session-factory>  
+ <property name="hbm2ddl.auto">create</property>  
+ <property name="show_sql">true</property>  
+ 
+ <property name="dialect">org.hibernate.dialect.MySQLDialect</property>  
+ <property name="connection.url">jdbc:mysql://localhost:3306/Collage</property>  
+ <property name="connection.username">root</property>  
+ <property name="connection.password">root</property>  
+ <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
+   <property name="show_query">true</property>  
+ <property name="formate_sql">true</property>  
+ 
+     <mapping resource ="TablePerConcreteClass/TablePerConcrete.hbm.xml"/>   
+   
+<!--  <mapping resource ="TablePerSubclass.TablePerSubclass.hbm.xml"/>  
+ 
+  <mapping resource ="WithoutAnotation.SchoolH.hbm.xml"/>
+  -->  
+  
+   
+  
+   </session-factory>  
+  
+   
+</hibernate-configuration>  

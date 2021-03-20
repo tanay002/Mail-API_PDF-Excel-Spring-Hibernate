@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="ht://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+                  http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd" 
+                 version="2.0">
+
+    <!-- JPA Named Stored Procedures -->
+    <named-stored-procedure-query name="call" procedure-name="productdto2">
+        <parameter class="java.lang.Integer" mode="IN" name="productId"/>
+        <parameter class="java.lang.Integer" mode="OUT" name="price"/>
+      </named-stored-procedure-query>
+    
+    <!-- entity mapping -->
+    <entity class="callParameterProcedure.Productdto1">
+        <attributes>
+            <basic name="proName"/>
+ <basic name="price"/>
+ 
+        </attributes>
+     </entity>
+
+</entity-mappings>
+
+
+

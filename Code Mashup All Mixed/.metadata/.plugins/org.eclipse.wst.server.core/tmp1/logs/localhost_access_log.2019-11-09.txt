@@ -1,0 +1,3 @@
+127.0.0.1 - - [09/Nov/2019:22:57:34 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [09/Nov/2019:22:57:37 +0530] "GET /HibernatState/WEB-INF/classes/StateS/UseStateMethod.java HTTP/1.1" 404 1047
+0:0:0:0:0:0:0:1 - - [09/Nov/2019:22:57:39 +0530] "GET /favicon.ico HTTP/1.1" 404 1085

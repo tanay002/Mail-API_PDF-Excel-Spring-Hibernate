@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>
+<class name="CollectionMapping.Question">
+<id name="qId">
+<generator class="increment">
+</generator>
+</id>
+
+<property name="qName" ></property>
+
+ <list name="ans" cascade="all">   
+          <key column="qid"></key>  
+          <index column="IndexN"></index>  
+       <one-to-many class="CollectionMapping.Answer"></one-to-many>
+       
+          </list>  
+</class>
+
+
+<class name="CollectionMapping.Answer" table="answer">  
+          <id name="ansId">  
+          <generator class="increment"></generator>  
+          </id>  
+          <property name="ansName"></property>  
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+package SingleTableMaping;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Collage {
+
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure("SchoolAnotConfig.cfg.xml");
+		SessionFactory sf=cfg.buildSessionFactory();
+		Session ses=sf.openSession();
+		PersonDTO p=new PersonDTO();
+		p.setpId(101);
+		p.setpName("Rinku");
+		
+		StudentDTO s=new StudentDTO();
+		s.setpId(102);
+		s.setpName("Chiku");
+		s.setRollno(201);
+		
+		TeacherDTO t=new TeacherDTO();
+		t.setpId(103);
+	    t.setpName("Piku");
+	    t.setCourse("Maths");
+	    
+		Transaction tx=ses.beginTransaction();
+		ses.save(p);
+		ses.save(s);
+		ses.save(t);
+		tx.commit();
+		ses.close();
+		System.out.println("Done");
+	
+	}  
+
+}

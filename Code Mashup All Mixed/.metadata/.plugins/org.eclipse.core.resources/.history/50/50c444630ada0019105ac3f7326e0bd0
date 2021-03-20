@@ -1,0 +1,62 @@
+package UsingAllFatchingMode;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+
+@Entity
+@Table(name="AddSetFatch")
+
+public class Address {
+
+	@Id  
+    @GeneratedValue(strategy=GenerationType.AUTO)  	
+	private int addId;
+	private String city;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	
+    @Fetch(FetchMode.JOIN)
+       // @BatchSize(size = 10)
+
+	
+	
+	private Set<Employee1> emp;
+
+	public int getAddId() {
+		return addId;
+	}
+
+	public void setAddId(int addId) {
+		this.addId = addId;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Set<Employee1> getEmp() {
+		return emp;
+	}
+
+	public void setEmp(Set<Employee1> emp) {
+		this.emp = emp;
+	}
+}

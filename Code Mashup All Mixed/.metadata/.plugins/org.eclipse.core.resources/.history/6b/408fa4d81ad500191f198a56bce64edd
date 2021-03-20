@@ -1,0 +1,28 @@
+package AnotationWithProject;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		EmployeeDto e=new EmployeeDto();
+		e.setEname("Shiya");
+		e.setEid(105);
+		
+		AnnotationConfiguration con=new AnnotationConfiguration();
+		con.configure("ConfigA.cfg.xml");
+		SessionFactory sf=con.buildSessionFactory();
+		Session ses=sf.openSession();
+		Transaction tx=ses.beginTransaction();
+		ses.save(e);
+		tx.commit();
+		ses.close();
+		System.out.println("Done");
+		
+		
+	}
+
+}

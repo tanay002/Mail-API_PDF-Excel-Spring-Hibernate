@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id = "std1" class = "com.SpringBeanAutowireing.Autowiring.ByName.StudentDtoByName" autowire="byName">
+   <property name="sid" value="101"></property>
+   <property name="sname" value="neha"></property>
+   
+   </bean>
+ 
+  <bean id = "add" class = "com.SpringBeanAutowireing.Autowiring.ByName.AddressDtoByName" >
+   <property name="city" value="Indore"></property>
+   </bean>
+ 
+
+</beans>

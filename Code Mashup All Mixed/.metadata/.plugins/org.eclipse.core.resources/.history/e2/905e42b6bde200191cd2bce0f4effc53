@@ -1,0 +1,77 @@
+package com.Spring_Registration_Form.Controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+
+@Controller
+public class ModalAndViewController {
+	
+	@Autowired
+	private RegForm reg;
+	
+	//@RequestMapping("/doRegister")
+
+	@PostMapping("/doRegister")
+	public String doRegisteration(HttpServletRequest req,ModelMap m)
+	{
+    
+  
+    AnnotationConfiguration cfg=new AnnotationConfiguration();
+	cfg.configure("HibernateConfiguration.xml");
+	SessionFactory sf=cfg.buildSessionFactory();
+	Session ses=sf.openSession();
+	
+	
+
+	int s4=Integer.parseInt(req.getParameter("uid"));
+String s1=req.getParameter("uname");
+String s2=req.getParameter("email");
+String s3=req.getParameter("pass");
+
+reg.setUid(s4);
+reg.setEmail(s2);
+reg.setPass(s3);
+reg.setUname(s1);
+
+
+List<RegForm> list=new ArrayList<RegForm>();
+
+list.add(reg);
+	
+m.addAttribute("Message", list);
+m.addAttribute("Message1", list);
+m.addAttribute("Message2", list);
+
+	
+	Transaction tx=ses.beginTransaction();
+	
+	
+	ses.save(m);
+	tx.commit();
+	ses.close();
+	System.out.println("Done");
+    
+		return "Welcom";
+
+	
+}
+	
+	
+	
+	
+	
+
+}

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>  
+  <class name="AllFatchingHBM.ComPanyFatch1"  >  
+    <id name="cId">  
+     <generator class="increment" />
+    </id>   
+    <property name="cname" ></property>    
+    
+    <!-- <list name="emp" cascade="all" inverse="false" fetch="select">  
+     <list name="emp" cascade="all" inverse="false" fetch="subselect">  
+  -->
+ <!-- <list name="emp" cascade="all" inverse="false" fetch="join">  
+  --> 
+ <list name="emp" cascade="all" inverse="false" batch-size="1">  
+
+ 
+          <key column="jbkj"></key>
+         <index column="company_id_index"></index>  
+           <one-to-many class="AllFatchingHBM.EmployeeFatch11"/>
+            </list>  
+  </class>  
+ 
+<class name="AllFatchingHBM.EmployeeFatch11" >  
+ <id name="id"  >  
+ <generator class="increment" />
+</id>  
+<property name="firstName"/>
+<property name="lastName" />
+</class>  
+ </hibernate-mapping>  

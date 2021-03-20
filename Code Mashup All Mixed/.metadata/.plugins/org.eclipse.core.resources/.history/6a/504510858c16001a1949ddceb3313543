@@ -1,0 +1,191 @@
+package Criteria;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.criteria.JoinType;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.DistinctRootEntityResultTransformer;
+
+
+public class Employee1 {
+
+	public static void main(String[] args) {
+		Employee1Dto e=new Employee1Dto();
+/*		e.seteName("Shikha");
+		e.seteId(101);
+		e.setSalary(80000);
+*/		
+		AnnotationConfiguration con=new AnnotationConfiguration();
+		con.configure("CriteriaConfigue.cfg.xml");
+		SessionFactory sf=con.buildSessionFactory();
+		Session ses=sf.openSession();
+		Transaction tx=ses.beginTransaction();
+		
+		Criteria ct=ses.createCriteria(Employee1Dto.class);
+
+		//Restrictions.gt(), Restrictions.ge(), Restrictions.lt() and Restrictions.le()
+		
+		/*
+		//greater than
+System.out.println("Greater Than\n");
+		ct.add(Restrictions.gt("salary",80000));
+*/		
+
+/*
+		//Lesser than
+		System.out.println("\nLesser Than\n");
+		ct.add(Restrictions.lt("salary",80000));
+*/
+	/*		
+		//Greater than equalto
+		System.out.println("\nGreater Than equal to\n");
+		ct.add(Restrictions.ge("salary",80000));
+	*/	
+	
+		/*//Lesser than equalto
+		System.out.println("\nLesser Than equal to\n");	
+		ct.add(Restrictions.le("salary",80000));
+		*/
+		
+			/*
+		//equalto Restrictions.eq() Example
+		System.out.println("\nequal to\n");
+		ct.add(Restrictions.eq("salary",80000));
+*/	
+		
+		/* 		
+		//not equalto  Restrictions.ne() Example
+		System.out.println("\nNot equal to\n");
+		ct.add(Restrictions.ne("salary",80000));
+		*/		
+		/*
+		//Like Restrictions.like() and Restrictions.ilike() example
+		System.out.println("\nLike Restrictions.like() and Restrictions.ilike() example\n");
+		
+	//	ct.add(Restrictions.like("eName","S%"));
+	//	ct.add(Restrictions.like("eName","%ja"));
+		//ct.add(Restrictions.like("eName","%o%"));
+	*/
+		/*
+			Logical Expression
+		we can combine AND and OR restrictions in logical expressions. When we add more than one constraint to a criteria query, it is interpreted as an AND, like so:
+		*/
+	
+		/*//OR Expression
+		//Criteria crit = ses.createCriteria(Employee1Dto.class);
+	System.out.println("\nOR Expression\n");
+		Criterion salaryLessThan = Restrictions.lt("salary",80000);
+		Criterion ename = Restrictions.like("eName","%a");
+		LogicalExpression orExp = Restrictions.or(salaryLessThan, ename);
+		System.out.println("\n OR Logical Operation="+ct.add(orExp));
+		//List results=crit.list();
+*/
+		
+/*			
+		//AND Expression
+		//		Criteria crit1 = ses.createCriteria(Employee1Dto.class);
+			
+		System.out.println("\nAND Expression\n");
+		Criterion salaryLessThan1 = Restrictions.lt("salary",80000);
+				Criterion ename1 = Restrictions.like("eName","%a");
+				LogicalExpression andExp = Restrictions.and(salaryLessThan1, ename1);
+				System.out.println("\n OR Logical Operation="+ct.add(andExp));
+*/			
+		//		List results1=crit1.list();
+			/*	
+//		agar bar bar or use kr rahe h check karne k liye to ek tree create ho gaya to ye sab karne ki jagah hum use disjunction me daal dete h,or AND k liye pr conjunction lagayege
+			Criterion salaryLessThan1 = Restrictions.ilike("eName","Pooja", MatchMode.ANYWHERE);
+			Criterion ename1 = Restrictions.ilike("eName","Swati", MatchMode.ANYWHERE);
+
+			
+			Disjunction disjunction = Restrictions.disjunction();
+			disjunction.add(salaryLessThan1);
+			disjunction.add(ename1);
+			ct.add(disjunction);
+*/			
+/*
+
+*Restrictions.sqlRestriction() Example
+sqlRestriction() restriction allows you to directly specify SQL in the Criteria API. It’s useful if you need to use SQL clauses that Hibernate does not support through the Criteria API.
+
+Your application’s code does not need to know the name of the table your class uses. Use {alias} to signify the class’s table, as follows:/		
+
+		
+		System.out.println("Restrictions.sqlRestriction() ");
+		ct.add(Restrictions.sqlRestriction("{alias}.eName like 'Po%'"));
+*/
+		/*
+		// paging through the result set
+		System.out.println(" paging through the result set");
+		ct.setFirstResult(1);
+		ct.setMaxResults(2);
+*/
+		
+/*		obtain unique result
+		Sometimes you know you are going to return only zero or one object from a given query. This could be because you are calculating an aggregate or because your restrictions naturally lead to a unique result. If you want obtain a single Object reference instead of a List, the uniqueResult() method on the Criteria object returns an object or null. If there is more than one result, the uniqueResult() method throws a HibernateException.
+
+		The following short example demonstrates having a result set that would have included more than one result, except that it was limited with the setMaxResults() method:
+*/
+	/*	Criterion price = Restrictions.gt("salary",new Integer(90000));
+		ct.setMaxResults(1);
+		Employee1Dto product = (Employee1Dto) ct.uniqueResult();*/
+/*		Again, please note that you need to make sure that your query returns only one or zero results if you use the uniqueResult() method. Otherwise, Hibernate will throw a NonUniqueResultException exception.
+*/
+
+/*
+ * obtain distinct results
+		which ensures that no duplicates will be in your query’s result set. Rather than using SELECT DISTINCT with SQL, the distinct result transformer compares each of your results using their default hashCode() methods, and only adds those results with unique hash codes to your result set. 
+		
+*//*		
+		Criterion salary = Restrictions.gt("salary",new Integer(90000));
+		ct.setResultTransformer( DistinctRootEntityResultTransformer.INSTANCE );
+*/
+
+/*		
+		//sort query results
+		Sorting the query’s results works much the same way with criteria as it would with HQL or SQL. The Criteria API provides the org.hibernate.criterion.Order class to sort your result set in either ascending or descending order, according to one of your object’s properties.
+
+*/
+		/*Criterion salaryLessThan = Restrictions.lt("salary",80000);
+		
+		ct.addOrder(Order.desc("salary"));
+*/
+
+		
+		//perform associations (joins)
+       
+		
+	List l=ct.list();
+		System.out.println(l);
+	Iterator it=l.iterator();
+	while(it.hasNext())
+		{
+			Employee1Dto e1=(Employee1Dto)it.next();
+			System.out.println(e1.geteId()+" "+e1.geteName()+"  "+e1.getSalary());
+		
+			
+		}
+		
+		
+		
+//		ses.save(e);
+	//	tx.commit();
+		ses.close();
+		System.out.println("Done");
+		
+		
+	}
+	}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;com.Hibernate.FatchingStrategy.WithAnnotation&apos;" deleteContents="false" description="Delete resource &apos;com.Hibernate.FatchingStrategy.WithAnnotation&apos;" element1="/com.Hibernate.FatchingStrategy.WithAnnotation" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1575459159208"/>
+</session>

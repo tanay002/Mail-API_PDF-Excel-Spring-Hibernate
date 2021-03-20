@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>
+<class name="OneToOneMapping.Employee" table="EMployee">
+<id name="eid">
+<generator class="increment">
+</generator>
+</id>
+
+<property name="ename" ></property>
+
+       <one-to-one name="add" cascade="all"></one-to-one>
+    
+</class>
+
+
+<class name="OneToOneMapping.Address" table="aDDress">  
+          <id name="addId">  
+          <generator class="foreign">  
+           <param name="property">emp</param>
+           </generator>
+          </id>  
+          <property name="city"></property>  
+  <one-to-one name="emp" cascade="all"></one-to-one>
+    
+ 
+  </class>
+</hibernate-mapping>

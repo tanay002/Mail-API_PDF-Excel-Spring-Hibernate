@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>
+<class name="ManyToManyMapping.Question1" table="ManyQues">
+<id name="queId" type="int">
+<!-- <column name="q_id"/> -->
+<generator class="increment">
+</generator>
+</id>
+
+<property name="ques" ></property>
+<list name="qa" table="ques" cascade="all">  
+            <key column="q_id" />  
+               <index column="index"></index>   
+            <many-to-many class="ManyToManyMapping.ManyAnswer" />  
+        </list>  
+       
+</class>
+
+
+<class name="ManyToManyMapping.ManyAnswer" table="answer">  
+          <id name="ansId" type="int">  
+        <!--   <column name="ans_id"/>
+         -->  
+          <generator class="increment">  
+           </generator>
+          </id>  
+          <property name="ans"></property> 
+          </class>
+</hibernate-mapping>

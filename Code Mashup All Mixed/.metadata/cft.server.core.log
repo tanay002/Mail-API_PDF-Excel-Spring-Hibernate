@@ -1,0 +1,2 @@
+Wed Sep 25 2019 01:54:38 PM - CloudFoundryServer.modifyModules(...): add: { com.Spring_MVCFlow [org.eclipse.jst.jee.server:com.Spring_MVCFlow/jst.web]} remove: {}
+Wed Sep 25 2019 01:54:40 PM - CloudFoundryServerBehaviour.publishModule(...): ADDED { com.Spring_MVCFlow [org.eclipse.jst.jee.server:com.Spring_MVCFlow/jst.web]}

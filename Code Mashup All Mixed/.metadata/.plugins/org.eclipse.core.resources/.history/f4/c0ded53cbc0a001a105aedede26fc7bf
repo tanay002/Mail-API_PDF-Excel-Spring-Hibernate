@@ -1,0 +1,66 @@
+package OneToManyMapping;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+@Entity
+
+public class AddressFatch {
+
+	@Id  
+    @GeneratedValue(strategy=GenerationType.AUTO)  	
+	private int addId;
+	private String city;
+	
+
+	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY,mappedBy="empid")
+	//@Fetch(FetchMode.SELECT)
+    
+	@Fetch(FetchMode.JOIN)
+    
+	//@BatchSize(size = 10)
+	@JoinColumn(name="emp_Id")
+	
+	private List<EmployeeFatch> emp;
+
+	public int getAddId() {
+		return addId;
+	}
+
+	public void setAddId(int addId) {
+		this.addId = addId;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public List<EmployeeFatch> getEmp() {
+		return emp;
+	}
+
+	public void setEmp(List<EmployeeFatch> emp) {
+		this.emp = emp;
+	}
+
+		
+	
+}

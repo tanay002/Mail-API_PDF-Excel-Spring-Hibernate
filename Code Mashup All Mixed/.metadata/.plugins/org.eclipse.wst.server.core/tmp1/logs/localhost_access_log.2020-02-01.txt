@@ -1,0 +1,4 @@
+127.0.0.1 - - [01/Feb/2020:16:53:23 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [01/Feb/2020:16:53:41 +0530] "GET /com.springToRemoveHibernateCode/Registration.jsp HTTP/1.1" 200 510
+0:0:0:0:0:0:0:1 - - [01/Feb/2020:16:53:47 +0530] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [01/Feb/2020:16:54:24 +0530] "GET /com.springToRemoveHibernateCode/doRegister1.do?uname=Saksu&email=njska%40gmail.com&pass=daskjn HTTP/1.1" 200 296

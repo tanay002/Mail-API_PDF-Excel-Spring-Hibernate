@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+   xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd" 
+   
+default-init-method="init"
+default-destroy-method="destroy"
+
+>
+   
+   <!-- configuration Bean life Cycle with xml way -->
+
+
+
+<context:annotation-config/>
+
+<bean id="studentDao1" class="BeanLifeCycleWithXMLConfiguration.StudentDao1">
+   
+<!-- <bean id="studentDao1" class="BeanLifeCycleWithXMLConfiguration.StudentDao1" init-method="init" destroy-method="destroy">  
+ --><property name="driver" value="com.mysql.jdbc.Driver"></property>
+<property name="url" value="jdbc:mysql://localhost:3306/Student"></property>
+<property name="username" value="root"></property>  
+<property name="password" value="root"></property>  
+
+
+</bean>  
+
+ <bean id="hello" class="BeanLifeCycleWithXMLConfiguration.MultipleClass" >  
+
+<!-- <bean id="hello" class="BeanLifeCycleWithXMLConfiguration.MultipleClass" init-method="init" destroy-method="destroy">  
+ --></bean>
+  
+  
+   
+</beans>  
